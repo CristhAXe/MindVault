@@ -1,0 +1,30 @@
+node_modules/
+.next/
+out/
+dist/
+.memorwise/
+.openlm/
+*.env
+.env*
+.DS_Store
+tsconfig.tsbuildinfo
+
+# Python virtualenvs
+.kokoro-venv/
+__pycache__/
+*.pyc
+
+# Claude Code project files (may contain personal memory/API keys)
+.claude/
+
+# Tesseract training data
+*.traineddata
+
+# IDE
+.vscode/
+.idea/
+
+# Misc artifacts
+remotion/
+design-system.md
+=0.9.2
