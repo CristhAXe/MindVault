@@ -1,7 +1,7 @@
 services:
   memorwise:
     build:
-      context: C:/Users/CristhXa/AI-Hub/Memorwise
+      context: insert your path ./Memorwise
     container_name: memorwise
     ports:
       - "4747:4747"
