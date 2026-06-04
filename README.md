@@ -53,10 +53,21 @@ Importas tus PDFs, haces preguntas en lenguaje natural, y obtienes respuestas pr
 │        Vault personal de conocimiento        │
 └─────────────────────────────────────────────┘
 ```
-📥 ¿Qué puedes cargar en Memorwise?
+
+---
+
+## 📥 ¿Qué puedes cargar en Memorwise?
+
 Memorwise es el motor RAG que indexa tu contenido y lo hace consultable vía IA.
-FuenteCómo usarlo📄 PDFSube tus libros, apuntes o documentación técnica🔗 URLPega el enlace de cualquier página web o artículo🎥 YouTubePega la URL del video — Memorwise extrae la transcripción📝 TextoEscribe o pega contenido directamente
-Una vez cargado, simplemente pregunta en lenguaje natural y obtienes respuestas basadas en tu contenido.
+
+| Fuente | Cómo usarlo |
+|--------|-------------|
+| 📄 PDF | Sube tus libros, apuntes o documentación técnica |
+| 🔗 URL | Pega el enlace de cualquier página web o artículo |
+| 🎥 YouTube | Pega la URL del video — Memorwise extrae la transcripción |
+| 📝 Texto | Escribe o pega contenido directamente |
+
+Una vez cargado, simplemente pregunta en lenguaje natural y obtienes respuestas basadas en **tu** contenido.
 
 ---
 
