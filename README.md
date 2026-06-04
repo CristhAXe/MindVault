@@ -1,65 +1,69 @@
-# AI-Powered-Personal-Knowledge-System
+# 🧠 MindVault
 
-Sistema personal de estudio y gestión de conocimiento basado en IA local utilizando Ollama, Qwen 2.5, Memorwise y Obsidian.
-
----
-
-## Descripción
-
-Este proyecto implementa un entorno de aprendizaje asistido por inteligencia artificial que funciona completamente de manera local, sin depender de servicios externos o APIs de pago.
-
-El objetivo es centralizar documentos, notas y recursos de estudio para realizar consultas inteligentes utilizando modelos LLM ejecutados localmente.
-
-### Características
-
-- Ejecución local mediante Ollama.
-- Integración con modelos Qwen 2.5.
-- Gestión de conocimiento mediante Memorwise.
-- Consulta de documentos PDF.
-- Recuperación contextual mediante embeddings (RAG).
-- Organización de notas en Obsidian.
-- Despliegue mediante Docker y Docker Compose.
-- Persistencia local de datos.
+> **Tu cerebro externo, completamente local.**  
+> Sistema de gestión del conocimiento con IA, RAG y búsqueda semántica — sin APIs de pago, sin datos en la nube.
 
 ---
 
-## Arquitectura
+## ¿Qué es MindVault?
 
-```text
-PDFs / Recursos
-        │
-        ▼
+MindVault es un entorno de estudio y gestión del conocimiento que combina **modelos de lenguaje locales** (LLMs) con **recuperación aumentada por contexto** (RAG) para que puedas conversar con tus propios documentos, notas y recursos — todo desde tu máquina, sin conexión a servicios externos.
 
-   Memorwise
-        │
+Importas tus PDFs, haces preguntas en lenguaje natural, y obtienes respuestas precisas basadas en tu propio conocimiento. Los resúmenes y apuntes se organizan en Obsidian.
 
- Embeddings / RAG
-        │
+---
 
-        ▼
+## ✨ Características
 
-    Qwen 2.5
-     (Ollama)
+- 🏠 **100% local** — ningún dato sale de tu máquina
+- 🔍 **RAG con embeddings semánticos** — busca por significado, no por palabras clave
+- 📄 **Consulta de PDFs** — interroga tus libros y documentos técnicos
+- 🤖 **Powered by Qwen 2.5 vía Ollama** — modelos open-source de alta calidad
+- 📝 **Integración con Obsidian** — organiza el conocimiento en tu vault personal
+- 🐳 **Despliegue con Docker** — un solo comando para levantar todo
+- 💾 **Persistencia local** — tus datos quedan en tu disco, siempre
 
-        ▼
+---
 
- Respuestas IA
+## 🏗️ Arquitectura
 
-        ▼
-
-    Obsidian
+```
+┌─────────────────────────────────────────────┐
+│                  Tus Recursos                │
+│         PDFs · Notas · Documentación         │
+└──────────────────────┬──────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────┐
+│                  Memorwise                   │
+│         Indexación + Embeddings + RAG        │
+│              (SQLite · Node.js)              │
+└──────────────────────┬──────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────┐
+│              Ollama · Qwen 2.5               │
+│         Inferencia LLM completamente         │
+│                    local                     │
+└──────────────────────┬──────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────┐
+│                  Obsidian                    │
+│        Vault personal de conocimiento        │
+└─────────────────────────────────────────────┘
 ```
 
 ---
 
-## Estructura del Proyecto
+## 🗂️ Estructura del proyecto
 
-```text
-AI-Hub/
+```
+mindvault/
 │
-├── docker-compose.yml
+├── docker-compose.yml       # Orquestación de servicios
 │
-└── Memorwise/
+└── Memorwise/               # Motor RAG
     ├── Dockerfile
     ├── package.json
     ├── package-lock.json
@@ -68,126 +72,138 @@ AI-Hub/
 
 ---
 
-## Tecnologías Utilizadas
+## 🧰 Stack tecnológico
 
-- Docker
-- Docker Compose
-- Node.js
-- SQLite
-- Ollama
-- Qwen 2.5
-- Memorwise
-- Obsidian
-
----
-
-## Requisitos Previos
-
-- Docker Desktop
-- Ollama
-- Git
-- Windows, Linux o macOS
+| Componente     | Tecnología                    |
+|----------------|-------------------------------|
+| Runtime local  | [Ollama](https://ollama.com)  |
+| Modelo LLM     | Qwen 2.5 (3b / 7b / 14b)     |
+| Motor RAG      | Memorwise                     |
+| Base de datos  | SQLite                        |
+| Backend        | Node.js                       |
+| Contenedores   | Docker + Docker Compose       |
+| Notas          | Obsidian                      |
 
 ---
 
-# Instalación
+## ⚙️ Requisitos previos
 
-## 1. Instalar Ollama
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [Ollama](https://ollama.com/download)
+- [Git](https://git-scm.com/)
+- [Obsidian](https://obsidian.md/) *(opcional, para organizar notas)*
+- Sistema operativo: Windows, macOS o Linux
 
-Descargar Ollama:
+---
 
-https://ollama.com/download
+## 🚀 Instalación
 
-Verificar instalación:
-
-```bash
-ollama --version
-```
-
-Iniciar el servicio:
+### 1. Instalar y levantar Ollama
 
 ```bash
+# Descargar desde https://ollama.com/download
 ollama serve
 ```
 
----
+### 2. Descargar un modelo
 
-## 2. Descargar un Modelo
+Elige según los recursos de tu equipo:
 
-### Recomendado
+| Modelo         | VRAM recomendada | Ideal para               |
+|----------------|------------------|--------------------------|
+| `qwen2.5:3b`   | ~4 GB            | Equipos modestos         |
+| `qwen2.5:7b`   | ~8 GB            | ⭐ Recomendado           |
+| `qwen2.5:14b`  | ~16 GB           | Mayor calidad de respuesta |
+| `llama3.1:8b`  | ~8 GB            | Alternativa en inglés    |
 
 ```bash
 ollama pull qwen2.5:7b
 ```
 
-### Opciones disponibles
-
-| Modelo | Recomendación |
-|----------|----------|
-| qwen2.5:3b | Equipos modestos |
-| qwen2.5:7b | Recomendado |
-| qwen2.5:14b | Mejor calidad |
-| llama3.1:8b | Alternativa equilibrada |
-
-Probar el modelo:
+### 3. Clonar el repositorio
 
 ```bash
-ollama run qwen2.5:7b
+git clone https://github.com/CristhAXe/AI-Powered-Personal-Knowledge-System.git mindvault
+cd mindvault
 ```
 
----
-
-## 3. Clonar el Proyecto
-
-```bash
-git clone <URL_DEL_REPOSITORIO>
-```
-
-Entrar al proyecto:
-
-```bash
-cd AI-Hub
-```
-
----
-
-## 4. Construir y Levantar Docker
-
-Desde la raíz del proyecto:
+### 4. Levantar los servicios
 
 ```bash
 docker compose up -d --build
 ```
 
-Verificar contenedores:
+Verifica que el contenedor esté corriendo:
 
 ```bash
 docker ps
 ```
 
-Debería aparecer:
+### 5. Abrir la aplicación
 
-```text
-memorwise
 ```
-
----
-
-## 5. Acceder a la Aplicación
-
-Abrir:
-
-```text
 http://localhost:4747
 ```
 
 ---
 
-# Docker Compose
+## 📋 Flujo de uso
 
-El proyecto utiliza la siguiente configuración:
+```
+1. ollama serve              → Levantar el motor LLM
+2. docker compose up -d      → Levantar Memorwise
+3. Importar PDFs             → Indexar documentos
+4. Hacer consultas           → Chatear con tu conocimiento
+5. Guardar en Obsidian       → Construir tu base de conocimiento
+```
+
+**Ejemplos de consultas:**
+
+```
+Resume este documento.
+¿Cuáles son los conceptos principales del capítulo 3?
+¿Qué diferencias hay entre X e Y según mis notas?
+Genera un quiz sobre este tema.
+```
+
+---
+
+## 📚 Integración con Obsidian
+
+Estructura de vault sugerida:
+
+```
+Vault/
+├── Backend/
+├── IA/
+├── Inglés/
+├── Arquitectura/
+└── DevOps/
+```
+
+**Plantilla de nota recomendada:**
+
+```markdown
+# Tema
+
+## Resumen IA
+<!-- Pegar respuesta de MindVault -->
+
+## Conceptos Clave
+
+## Ejemplos Prácticos
+
+## Preguntas de Repaso
+
+## Recursos
+```
+
+---
+
+## 🐳 Configuración Docker
 
 ```yaml
+# docker-compose.yml
 services:
   memorwise:
     build:
@@ -206,133 +222,33 @@ volumes:
 
 ---
 
-# Dockerfile
+## 💡 Casos de uso
 
-```dockerfile
-FROM node:20
-
-WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm install
-
-COPY . .
-
-RUN npm rebuild better-sqlite3
-
-EXPOSE 4747
-
-CMD ["npm","run","dev"]
-```
+- 📖 Estudiar cursos técnicos interrogando el material directamente
+- 🔍 Buscar conceptos en tu documentación personal
+- 📊 Analizar y resumir PDFs extensos
+- 🗃️ Construir una base de conocimiento personal acumulativa
+- ✍️ Generar resúmenes y notas de estudio automáticamente
+- 🧪 Crear preguntas de repaso sobre cualquier tema
 
 ---
 
-# Flujo de Trabajo
+## 🛣️ Roadmap
 
-### 1. Iniciar Ollama
-
-```bash
-ollama serve
-```
-
-### 2. Levantar Memorwise
-
-```bash
-docker compose up -d
-```
-
-### 3. Importar PDFs
-
-Agregar documentos de estudio para indexación.
-
-### 4. Consultar Información
-
-Ejemplos:
-
-```text
-Resume este documento.
-```
-
-```text
-¿Cuáles son los conceptos principales?
-```
-
-```text
-¿Qué explica el capítulo 4?
-```
-
-### 5. Guardar Conocimiento
-
-Organizar resúmenes y apuntes dentro de Obsidian.
+- [ ] Soporte multi-modelo (cambiar modelo desde la UI)
+- [ ] Ingesta de URLs y páginas web
+- [ ] Exportación directa a Obsidian
+- [ ] Soporte para imágenes (modelos multimodales)
+- [ ] API REST para integración con otras herramientas
 
 ---
 
-# Integración con Obsidian
+## 👤 Autor
 
-Ejemplo de estructura de notas:
-
-```text
-Vault/
-│
-├── Backend
-├── IA
-├── Inglés
-├── Arquitectura
-└── DevOps
-```
-
-Plantilla sugerida:
-
-```markdown
-# Tema
-
-## Resumen
-
-## Conceptos Clave
-
-## Ejemplos
-
-## Preguntas
-
-## Recursos
-```
+Proyecto personal de **CristhAXe** — explorando el potencial de la IA local, RAG y la gestión del conocimiento con herramientas open source.
 
 ---
 
-# Casos de Uso
+## 📄 Licencia
 
-- Estudio de cursos técnicos.
-- Consulta de documentación.
-- Análisis de PDFs.
-- Gestión de conocimiento personal.
-- Creación de resúmenes automáticos.
-- Organización de apuntes en Obsidian.
-
----
-
-# Modelos Recomendados
-
-## Equipos con pocos recursos
-
-```bash
-ollama pull qwen2.5:3b
-```
-
-## Mejor equilibrio calidad/rendimiento
-
-```bash
-ollama pull qwen2.5:7b
-```
-
-## Mayor calidad
-
-```bash
-ollama pull qwen2.5:14b
-```
-
----
-
-# Autor
-
-Proyecto personal desarrollado para explorar IA local, recuperación de conocimiento (RAG), gestión documental y productividad académica utilizando herramientas open source.
+MIT — libre para usar, modificar y distribuir.
