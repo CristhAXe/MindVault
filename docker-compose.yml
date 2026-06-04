@@ -1,0 +1,14 @@
+services:
+  memorwise:
+    build:
+      context: C:/Users/CristhXa/AI-Hub/Memorwise
+    container_name: memorwise
+    ports:
+      - "4747:4747"
+    environment:
+      - CUDA_VISIBLE_DEVICES=-1
+      - ORT_DISABLE_CUDA=1
+    restart: always
+
+volumes:
+  open-webui:
