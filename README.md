@@ -233,22 +233,6 @@ volumes:
 
 ---
 
-## 🛣️ Roadmap
-
-- [ ] Soporte multi-modelo (cambiar modelo desde la UI)
-- [ ] Ingesta de URLs y páginas web
-- [ ] Exportación directa a Obsidian
-- [ ] Soporte para imágenes (modelos multimodales)
-- [ ] API REST para integración con otras herramientas
-
----
-
-## 👤 Autor
-
-Proyecto personal de **CristhAXe** — explorando el potencial de la IA local, RAG y la gestión del conocimiento con herramientas open source.
-
----
-
 ## 📄 Licencia
 
 MIT — libre para usar, modificar y distribuir.
