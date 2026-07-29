@@ -2,7 +2,7 @@
 
 A local AI knowledge workspace built with Memorwise, Ollama and Obsidian.
 
-MindVault combines local LLMs with RAG to search and chat with your own documents without relying on external APIs.
+MindVault uses [Memorwise](https://github.com/robzilla1738/memorwise) as the local RAG engine for document indexing and semantic search.
 
 ## Features
 
