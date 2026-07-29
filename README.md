@@ -62,6 +62,14 @@ Open:
 ```
 http://localhost:4747
 ```
+## Docker Benefits
+
+- No dependency conflicts
+- Portable environment
+- Easy setup and deployment
+- Simple service management
+- Clean host system
+- Reproducible configuration
 
 ## Purpose
 
