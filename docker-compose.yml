@@ -1,14 +1,27 @@
+# docker-compose.yml
 services:
   memorwise:
     build:
-      context: insert your path ./Memorwise
+      context: ./Memorwise
     container_name: memorwise
     ports:
       - "4747:4747"
     environment:
       - CUDA_VISIBLE_DEVICES=-1
       - ORT_DISABLE_CUDA=1
+      - OLLAMA_HOST=http://ollama:11434
+    depends_on:
+      - ollama
+    restart: always
+
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
     restart: always
 
 volumes:
-  open-webui:
+  ollama_data:
